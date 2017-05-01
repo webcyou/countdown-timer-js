@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Count Down Timer JS</title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="./js/countdown_timer.js"></script>
+</head>
+<body>
+  <div class="timerView">
+      <p id="timer" class="time"></p>
+  </div>
+  <script>
+      var date     = new Date(),
+          nowTimes = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
+          timeElem = document.getElementById('timer');
+
+      new CountDownTimer(nowTimes, function(times, prams) {
+          timeElem.innerText = times;
+
+          if(prams.isFinal()) {
+            location.reload();
+          }
+      });
+  </script>
+</body>
+</html>
