@@ -15,7 +15,7 @@
           nowTimes = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
           timeElem = document.getElementById('timer');
 
-      new CountDownTimer(nowTimes, function(times, prams) {
+      var time = new CountDownTimer(nowTimes, function(times, prams) {
           timeElem.innerText = times;
 
           if(prams.isFinal()) {

@@ -100,6 +100,9 @@ var CountDownTimer;
                 this.countDownMinute();
             }
         };
+        CountDownTimerModel.prototype.setTimes = function (times) {
+            this.times = Time.fromData(times.split(/:|：/g));
+        };
         CountDownTimerModel.prototype.getTimes = function () {
             return this.times;
         };

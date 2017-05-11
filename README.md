@@ -85,6 +85,8 @@ prams: Time
 
 ### CallBack Parameters Reference
 
+Time Object
+
 | ParametersName | value         | Detail                | 
 | --------------- |:---------------:| -------------------- |
 | id | number | created date Id |
@@ -95,6 +97,22 @@ prams: Time
 | times | string | "hh:mm:ss" |
 | isFinal | boolean | To become true is the one time of 00:00:00 . |
 | createdAt | string | Time that was created |
+
+### Public Function Reference
+
+```
+let timer = new CountDownTimer("hh:mm:ss");
+```
+
+| FunctionName | value         | Detail                | 
+| --------------- |:---------------:| -------------------- |
+| setTimes | string | "hh:mm:ss" change the times |
+| getTimes | Time | get the Time Object |
+| getTimesStr | string | "hh:mm:ss" get the times |
+| isFinal | boolean | To become true is the one time of 00:00:00 |
+| subscribe | Function | subscribe CallBack function |
+
+
 
 ### Start develop
 ```

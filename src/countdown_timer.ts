@@ -72,6 +72,10 @@ module CountDownTimer {
       }
     }
 
+    public setTimes(times: string): void {
+      this.times = Time.fromData(times.split(/:|：/g));
+    }
+
     public getTimes(): Time {
       return this.times;
     }
