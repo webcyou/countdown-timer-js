@@ -67,6 +67,12 @@ describe('CountUpTimer', function() {
       });
     });
 
+    describe('computeDuration', function() {
+      it('change format', function() {
+        assert(timmer.computeDuration(953994) === "00:15:54");
+      });
+    });
+
     describe('isFinal', function() {
       it('check type', function() {
         assert(typeof timmer.isFinal() === "boolean");

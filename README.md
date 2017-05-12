@@ -48,7 +48,22 @@ new CountDownTimer("hh:mm:ss", callBack);
 **example**
 
 ```
+new CountDownTimer("12:11:02", function(times, parameters) {
+    console.log(times);
+});
+```
+or
+
+```
 new CountDownTimer("12:11:2", function(times, parameters) {
+    console.log(times);
+});
+```
+
+or Unix Timestamp (milliseconds)
+
+```
+new CountDownTimer(953994, function(times, parameters) {
     console.log(times);
 });
 ```
@@ -111,8 +126,7 @@ let timer = new CountDownTimer("hh:mm:ss");
 | getTimesStr | string | "hh:mm:ss" get the times |
 | isFinal | boolean | To become true is the one time of 00:00:00 |
 | subscribe | Function | subscribe CallBack function |
-
-
+| computeDuration | number to string | Unix Timestamp (milliseconds) convert to "hh:mm:ss" format |
 
 ### Start develop
 ```
@@ -137,6 +151,11 @@ gulp mocha
 gulp mocha.watch
 ```
 
+### build Source
+
+```
+gulp dist
+```
 
 ### Author
 Daisuke Takayama

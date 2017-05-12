@@ -19,7 +19,8 @@ module CountDownTimer {
       fn?: Function
       ) {
       let that = this;
-      this.times = Time.fromData(times.split(/:|：/g));
+
+      this.setTimes(this.getTimesFormat(times));
 
       let countFunc: Function = () => {
         that.countDown(() => {
@@ -33,6 +34,18 @@ module CountDownTimer {
         });
       };
       countFunc();
+    }
+
+    private getTimesFormat(times) {
+      let formatTime;
+
+      if(typeof times === "number") {
+        formatTime = this.computeDuration(times);
+      } else {
+        formatTime = times;
+      }
+
+      return formatTime;
     }
 
     private countDown(fn: Function) {
@@ -86,6 +99,14 @@ module CountDownTimer {
 
     public isFinal(): boolean {
       return this.times.isFinal();
+    }
+
+    public computeDuration(ms: number): string {
+      let h: any = String(Math.floor(ms / 3600000) + 100).substring(1);
+      let m: any = String(Math.floor((ms - h * 3600000)/60000)+ 100).substring(1);
+      let s: any = String(Math.round((ms - h * 3600000 - m * 60000)/1000)+ 100).substring(1);
+
+      return h + ':' + m + ':' + s;
     }
 
     public subscribe(fn: Function): void {

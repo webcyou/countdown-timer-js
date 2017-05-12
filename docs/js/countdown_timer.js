@@ -57,7 +57,7 @@ var CountDownTimer;
             this.COUNT_DOWN_MSEC = 1000;
             this.callBackFunction = function () { };
             var that = this;
-            this.times = Time.fromData(times.split(/:|：/g));
+            this.setTimes(this.getTimesFormat(times));
             var countFunc = function () {
                 that.countDown(function () {
                     that.times.setTimes();
@@ -70,6 +70,16 @@ var CountDownTimer;
             };
             countFunc();
         }
+        CountDownTimerModel.prototype.getTimesFormat = function (times) {
+            var formatTime;
+            if (typeof times === "number") {
+                formatTime = this.computeDuration(times);
+            }
+            else {
+                formatTime = times;
+            }
+            return formatTime;
+        };
         CountDownTimerModel.prototype.countDown = function (fn) {
             var _this = this;
             var that = this;
@@ -111,6 +121,12 @@ var CountDownTimer;
         };
         CountDownTimerModel.prototype.isFinal = function () {
             return this.times.isFinal();
+        };
+        CountDownTimerModel.prototype.computeDuration = function (ms) {
+            var h = String(Math.floor(ms / 3600000) + 100).substring(1);
+            var m = String(Math.floor((ms - h * 3600000) / 60000) + 100).substring(1);
+            var s = String(Math.round((ms - h * 3600000 - m * 60000) / 1000) + 100).substring(1);
+            return h + ':' + m + ':' + s;
         };
         CountDownTimerModel.prototype.subscribe = function (fn) {
             this.callBackFunction = fn;
