@@ -20,7 +20,7 @@ module CountDownTimer {
       ) {
       let that = this;
 
-      this.setTimes(this.getTimesFormat(times));
+      this.setTimes(times);
 
       let countFunc: Function = () => {
         that.countDown(() => {
@@ -86,7 +86,7 @@ module CountDownTimer {
     }
 
     public setTimes(times: string): void {
-      this.times = Time.fromData(times.split(/:|：/g));
+      this.times = Time.fromData(this.getTimesFormat(times).split(/:|：/g));
     }
 
     public getTimes(): Time {

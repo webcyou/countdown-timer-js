@@ -54,7 +54,7 @@ gulp.task('css.min', function() {
       cascade: false
     }))
     .pipe(cssmin())
-    .pipe(gulp.dest( DEMO_DIR + '/css'));
+    .pipe(gulp.dest( DEMO_DIR ));
 });
 
 

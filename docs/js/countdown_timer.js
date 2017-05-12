@@ -57,7 +57,7 @@ var CountDownTimer;
             this.COUNT_DOWN_MSEC = 1000;
             this.callBackFunction = function () { };
             var that = this;
-            this.setTimes(this.getTimesFormat(times));
+            this.setTimes(times);
             var countFunc = function () {
                 that.countDown(function () {
                     that.times.setTimes();
@@ -111,7 +111,7 @@ var CountDownTimer;
             }
         };
         CountDownTimerModel.prototype.setTimes = function (times) {
-            this.times = Time.fromData(times.split(/:|：/g));
+            this.times = Time.fromData(this.getTimesFormat(times).split(/:|：/g));
         };
         CountDownTimerModel.prototype.getTimes = function () {
             return this.times;
